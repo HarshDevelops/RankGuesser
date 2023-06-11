@@ -13,7 +13,7 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(express.static(path.resolve(__dirname, 'public')));
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use("/public", express.static(path.join(__dirname, "public")))
 const notesSchema = {
     game: String,
     link: String,
@@ -24,7 +24,7 @@ const notesSchema = {
 const Note = mongoose.model("Note", notesSchema)
 app.get('/', function (req, res) {
     console.log("ok")
-    res.sendFile(__dirname + "/submit-clip.html")
+    res.sendFile(__dirname + "/public/submit-clip.html")
     // dbConn.then(function (db) {
     //     delete req.body._id; // for safety reasons
     //     db.collection('feedbacks').insertOne(req.body);
