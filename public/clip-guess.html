@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Guesser</title>
+    <link type="text/css" rel="stylesheet" href="/public/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+
+<body style="background-color: #1F2833;">
+    <nav class="navbar">
+        <div class="max-width">
+            <ul class="menu">
+                <li><a href="/index.html" class="menu-btn">LOGO GOES HERE</a></li>
+                <li><a href="/index.html" class="menu-btn">Games</a></li>
+                <li><a href="/submit-clip.html" class="menu-btn">Add Your Clip</a></li>
+                <li><a href="/leaderboard.html" class="menu-btn">Leaderboard</a></li>
+                <li><a href="/about.html" class="menu-btn">About</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header style="background-color: #1F2833; text-align: center;">
+        <u>
+            <h1 style="margin-bottom: 0; color: #66FCF1;">GUESS THE RANK</h1>
+        </u>
+    </header>
+
+    <div class="clip" style="border: #66FCF1 2px solid;">
+        <div style="margin: auto;
+      width: 50%;
+      padding: 10px;"> <iframe width="560" height="315" src="https://www.youtube.com/embed/qARXCXvQXKY"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe> </div>
+    </div>
+
+    <div class="rank">
+        <button class="button" value="Bronze" name="Bronze"
+            style="background-color: aliceblue; margin-left: 2%;">Bronze</button>
+        <button class="button" value="Silver" name="Silver"
+            style="background-color: aliceblue; margin-left: 2%;">Silver</button>
+        <button class="button" value="Gold" name="Gold"
+            style="background-color: aliceblue; margin-left: 2%;">Gold</button>
+        <button class="button" value="Platinum" name="Platinum"
+            style="background-color: aliceblue; margin-left: 2%;">Platinum</button>
+        <button class="button" value="Diamond" name="Diamond"
+            style="background-color: aliceblue; margin-left: 2%;">Diamond</button>
+        <button class="button" value="Crown" name="Crown"
+            style="background-color: aliceblue; margin-left: 2%;">Crown</button>
+        <button class="button" value="Ace" name="Ace" style="background-color: aliceblue; margin-left: 2%;">Ace</button>
+        <button class="button" value="Conqueror" name="Conqueror"
+            style="background-color: aliceblue; margin-left: 2%;">Conqueror</button>
+
+    </div>
+</body>
+<script>
+
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert(button.value);
+        })
+    })
+
+
+</script>
+
+</html>
