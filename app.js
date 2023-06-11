@@ -4,10 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const dbConn = "mongodb+srv://harsheydevs:harshkaaccount@rankguesser.zszfjfg.mongodb.net/Clips";
-// const client = mongoose.connect(dbConn, { useNewUrlParser: true, useUnifiedTopology: true});
-const client = new MongoClient(dbConn);
-const db = client.db('Clips');
-const collection = db.collection('notes');
+const client = mongoose.connect(dbConn, { useNewUrlParser: true, useUnifiedTopology: true});
 
 var app = express();
 
@@ -23,13 +20,7 @@ const notesSchema = {
 
 const Note = mongoose.model("Note", notesSchema)
 app.get('/', function (req, res) {
-    console.log("ok")
-    res.sendFile(__dirname + "/public/submit-clip.html")
-    // dbConn.then(function (db) {
-    //     delete req.body._id; // for safety reasons
-    //     db.collection('feedbacks').insertOne(req.body);
-    // });
-    // res.send('Data received:\n' + JSON.stringify(req.body));
+    res.sendFile(__dirname + "/public/index.html")
 });
 
 app.post('/', function (req, res) {
@@ -41,33 +32,16 @@ app.post('/', function (req, res) {
     });
     Newnote.save();
     res.redirect('/');
-
 })
 
+app.get('/public/clip-guess', function (req, res) {
+            res.sendFile(__dirname + "/public/clip-guess.html");
+});
 
-app.get('/clip-guess', function (req, res) {
-    async function run() {
-        try {
-            res.sendFile(__dirname + "/public/clip-guess.html")
-            // const first = await collection.findOne();
-            // console.log(first);
-
-            db.collection.aggregate([
-                {
-                  "$sample": {
-                    "size": 1
-                  }
-                }
-              ])
-              
-        }
-        finally {
-            await client.close();
-        }
-    }
-    run().catch(console.dir);
-
-}) ;
+app.post('/public/clip-guess', function (req, res) {
+    const game = req.body.Button;
+    res.redirect('/public/clip-guess');
+});
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000");
