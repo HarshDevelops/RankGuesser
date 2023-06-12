@@ -33,32 +33,40 @@
         </u>
     </header>
 
+    <% if ( message ) { %>
+        <div class="flash"><%= message %></div>
+    <% } %>
+    
+
     <div class="clip" style="border: #66FCF1 2px solid;">
         <div style="margin: auto;
       width: 50%;
-      padding: 10px;"> <iframe width="560" height="315" src="https://www.youtube.com/embed/qARXCXvQXKY"
+      padding: 10px;">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZQVIWHenACU"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe> </div>
+                allowfullscreen></iframe>
+        </div>
     </div>
 
     <div class="rank">
         <form action="/public/clip-guess" method="post">
-        <button class="button" value="Bronze" name="Button"
-            style="background-color: aliceblue; margin-left: 2%;">Bronze</button>
-        <button class="button" value="Silver" name="Button"
-            style="background-color: aliceblue; margin-left: 2%;">Silver</button>
-        <button class="button" value="Gold" name="Button"
-            style="background-color: aliceblue; margin-left: 2%;">Gold</button>
-        <button class="button" value="Platinum" name="Button"
-            style="background-color: aliceblue; margin-left: 2%;">Platinum</button>
-        <button class="button" value="Diamond" name="Button"
-            style="background-color: aliceblue; margin-left: 2%;">Diamond</button>
-        <button class="button" value="Crown" name="Button"
-            style="background-color: aliceblue; margin-left: 2%;">Crown</button>
-        <button class="button" value="Ace" name="Button" style="background-color: aliceblue; margin-left: 2%;">Ace</button>
-        <button class="button" value="Conqueror" name="Button"
-            style="background-color: aliceblue; margin-left: 2%;">Conqueror</button>
+            <button class="button" value="Bronze" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Bronze</button>
+            <button class="button" value="Silver" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Silver</button>
+            <button class="button" value="Gold" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Gold</button>
+            <button class="button" value="Platinum" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Platinum</button>
+            <button class="button" value="Diamond" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Diamond</button>
+            <button class="button" value="Crown" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Crown</button>
+            <button class="button" value="Ace" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Ace</button>
+            <button class="button" value="Conqueror" name="Button"
+                style="background-color: aliceblue; margin-left: 2%;">Conqueror</button>
         </form>
     </div>
 </body>
