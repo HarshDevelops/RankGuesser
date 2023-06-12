@@ -10,19 +10,11 @@ const notifier = require('node-notifier');
 const client = mongoose.connect(dbConn, { useNewUrlParser: true, useUnifiedTopology: true });
 const clients = MongoClient.connect('mongodb+srv://harsheydevs:harshkaaccount@rankguesser.zszfjfg.mongodb.net/Clips');
 async function main() {
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
     const uri = "mongodb+srv://harsheydevs:harshkaaccount@rankguesser.zszfjfg.mongodb.net/Clips";
     const client = new MongoClient(uri);
     try {
-        // Connect to the MongoDB cluster
         await client.connect();
-
-        // Make the appropriate DB calls
         await listDatabases(client);
-
     } catch (e) {
         console.error(e);
     } finally {
@@ -36,15 +28,13 @@ var collection;
 async function listDatabases(client) {
     databasesList = await client.db().admin().listDatabases();
     db = client.db("Clips");
-    //  console.log("ok");
     collectionsList = await db.listCollections().toArray();
-    // console.log(collectionsList);
     collection = db.collection("Note");
-    // console.log("Databases:");
-    // databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 const dbName = 'Clips';
 const collectionName = 'Bgmis';
+
+
 var optionss = {
     min: 1
     , max: 20000
@@ -56,31 +46,37 @@ const ui = 897;
 var record_final;
 async function findRecordByUniqueNumber() {
     try {
-        // Connect to the MongoDB server
         const client = await MongoClient.connect(dbConn);
-
-        // Select the database and collection
         const db = client.db('Clips');
-        const collection = db.collection('bgmis'); // Replace with the actual collection name
+        const collection = db.collection('bgmis');
 
-        // Find the record with the given unique_number
-        record = await collection.findOne({ unique_no: ui });
+        //----------------------------
+
+        const records = await collection.find().toArray();
+        const arr = [];
+        for (const z of records) {
+            const xValue = z.unique_no; 
+            arr.push(xValue);
+        }
+        console.log('Array of column x values:');
+        console.log(arr);
+        const randomIndex = Math.floor(Math.random() * arr.length);
+        var ran =  arr[randomIndex];
+
+        //----------------------------
+        record = await collection.findOne({ unique_no: ran });
         const cursor = collection.find();
-        // Iterate over the cursor and print each record
         if (record) {
             console.log('Record found:');
             console.log(record);
             record_final = record;
-
         } else {
             console.log('Record not found');
-
         }
     } catch (err) {
         console.error('Error:', err);
         res.status(500).json({ message: 'Internal server error' });
     } finally {
-        // Close the connection
         console.log();
     }
 }
@@ -98,12 +94,13 @@ const notesSchema = {
     rank: String
 }
 
+
 const Bgmi = mongoose.model("Bgmi", notesSchema)
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/public/index.html")
 });
 
-app.get('/public/submit-clip.html', async function (req, res){
+app.get('/public/submit-clip.html', async function (req, res) {
     console.log("ok");
     res.sendFile(__dirname + "/public/submit-clip.html");
     console.log("kokie");
@@ -143,12 +140,12 @@ app.get('/public/clip-guess', async function (req, res) {
 
 app.post('/public/clip-guess', function (req, res) {
     const game = req.body.Button;
-    console.log("RANK by user: ",game);
-    console.log("RANK by admin: ",rank);
+    console.log("RANK by user: ", game);
+    console.log("RANK by admin: ", rank);
     if (game == rank) {
         alert("Correct Answer");
     }
-    else{
+    else {
         alert("Wrong Answer");
     }
 
