@@ -189,6 +189,14 @@ input::placeholder {
     color: #fff;
 }
 
+table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            /* Your table cell styles here */
+        }
+
 
     </style>
 </head>
@@ -206,40 +214,28 @@ input::placeholder {
         </div>
     </div>
 </nav>
-
-    <section class="container">
-        <img src="https://images.unsplash.com/photo-1626675187623-7d32b499c6a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="" class="image" />
-        <u><header style="color: black;">Leaderboard Coming Soon!</header></u>
-        <p>
-          We are excited to announce that we will be launching leadboard section soon! 
-        </p>
-        <p><span>Every month</span> One Lucky user will get a chance to win free <span>Battle Pass!</span></p>
-        <div class="time-content">
-          <div class="time days" >
-            <span class="number" style=" color:#66FCF1;"></span>
-            <span class="text">days</span>
-          </div>
-          <div class="time hours">
-            <span class="number" style=" color:#66FCF1;"></span>
-            <span class="text">hours</span>
-          </div>
-          <div class="time minutes">
-            <span class="number" style=" color:#66FCF1;"></span>
-            <span class="text">minutes</span>
-          </div>
-          <div class="time seconds">
-            <span class="number" style=" color:#66FCF1;"></span>
-            <span class="text">seconds</span>
-          </div>
-        </div>
-        <div class="email-content">
-          <p>Subscribe now to get the latest updates!</p>
-          <div class="input-box">
-            <input type="email" placeholder="Enter your email..." />
-            <button>Notify Me</button>
-          </div>
-        </div>
-      </section>
+<div class="container">
+  <h1>Leaderboard</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Score</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% leaderboard.forEach(function(user, index) { %>
+              <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.rank %></td>
+              </tr>
+          <% }); %>
+      </tbody>
+  </table>
+  <p>Your Rank: <%= currentUser.rank %></p>
+</div>
 </body>
 <script>
     const seconds = document.querySelector(".seconds .number"),
