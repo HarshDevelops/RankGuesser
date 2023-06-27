@@ -89,11 +89,21 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use("/public", express.static(path.join(__dirname, "public")))
+
+
 app.use(session({
   secret: 'your-secret-key',
   resave: false,
   saveUninitialized: false
 }));
+
+let totalVisitors = 0;
+
+app.use(function(req, res, next) {
+  totalVisitors++;
+  next();
+});
+
 
 const notesSchema = {
   unique_no: Number,
@@ -111,7 +121,9 @@ const authenticationSchema = {
 const auth = mongoose.model("auth", authenticationSchema);
 
 app.get('/login', function (req, res) {
-    res.sendFile(__dirname + "/public/login.html")
+    // res.sendFile(__dirname + "/public/login.html")
+    console.log("totalVisitors: ", totalVisitors)
+    res.render('login', { totalVisitors: totalVisitors });
   });
   
   app.post('/login', async function (req, res) {
@@ -169,7 +181,8 @@ app.get('/login', function (req, res) {
   });
   
   app.get('/', function (req, res) {
-    res.sendFile(__dirname + "/public/login.html");
+    console.log("totalVisitors: ", totalVisitors)
+    res.render('login', { totalVisitors: totalVisitors });
   });
   
   app.get('/public/submit-clip.html', async function (req, res) {
@@ -248,7 +261,6 @@ app.get('/login', function (req, res) {
       const currentUser = await auth.findOne({ username: req.session.username }, 'rankofuser');
     const currusername = req.session.username;
       const totalRecords = await auth.countDocuments();
-    console.log("Total Records:", totalRecords);
       res.render('leaderboard', { leaderboard: leaderboard, currentUser: currusername, totalRecords: totalRecords , rankofuser : currentUser.rankofuser});
     } catch (err) {
       console.log(err);
