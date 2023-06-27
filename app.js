@@ -123,7 +123,6 @@ app.get('/login', function (req, res) {
       const founduser = await auth.findOne({ username: username });
       if (founduser) {
         if (founduser.password === password) {
-          alert("login successful!")
           req.session.username = username;
           res.redirect('/public/submit-clip.html');
         } else {
@@ -237,33 +236,88 @@ app.get('/login', function (req, res) {
     }
     res.redirect('/public/clip-guess');
   });
-  
+
   app.get('/leaderboard', async function (req, res) {
     try {
-      // Fetch the top 10 users based on their rank (score)
+
       const leaderboard = await auth.find({}, 'username rankofuser')
         .sort({ rankofuser: -1 })
         .limit(10)
         .exec();
       
-      // Find the current user's rank (score)
       const currentUser = await auth.findOne({ username: req.session.username }, 'rankofuser');
+    const currusername = req.session.username;
+      const totalRecords = await auth.countDocuments();
+    console.log("Total Records:", totalRecords);
+      res.render('leaderboard', { leaderboard: leaderboard, currentUser: currusername, totalRecords: totalRecords , rankofuser : currentUser.rankofuser});
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+  app.listen(3000, function () {
+    console.log("Server is running on port 3000");
+  });
+
+
+  app.get('/randomrecgen', async function (req, res) {
+    try {
+      const numRecords = 20; // Specify the number of random records you want to generate
       
-      console.log('All Users:');
-      const allUsers = await auth.find({}, 'username');
-      console.log(allUsers);
-  
-      res.render('leaderboard', { leaderboard: leaderboard, currentUser: currentUser });
+      for (let i = 0; i < numRecords; i++) {
+        const username = generateRandomUsername();
+        const password = generateRandomPassword();
+        const score = generateRandomScore();
+        
+        const newUser = new auth({
+          username: username,
+          password: password,
+          rankofuser: score
+        });
+        
+        await newUser.save();
+      }
+      
+      res.send('Random records generated successfully');
     } catch (err) {
       console.log(err);
       res.status(500).json({ message: 'Internal server error' });
     }
   });
   
+  // Function to generate a random username
+  function generateRandomUsername() {
+    const length = 8; // Specify the desired length of the username
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let username = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      username += characters.charAt(randomIndex);
+    }
+    return username;
+  }
   
-  app.listen(3000, function () {
-    console.log("Server is running on port 3000");
-  });
+  // Function to generate a random password
+  function generateRandomPassword() {
+    const length = 10; // Specify the desired length of the password
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
+    let password = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      password += characters.charAt(randomIndex);
+    }
+    return password;
+  }
+  
+  // Function to generate a random score
+  function generateRandomScore() {
+    const minScore = 0; // Specify the minimum score value
+    const maxScore = 1000; // Specify the maximum score value
+    return Math.floor(Math.random() * (maxScore - minScore + 1) + minScore);
+  }
+
+  
 
 // //-----------------------------------------------------
 // var express = require('express');

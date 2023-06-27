@@ -30,7 +30,7 @@
         }
 
         table {
-            width: 90%;
+            width: 100%;
             table-layout: fixed;
         }
 
@@ -80,6 +80,9 @@
             font-weight: 400;
         }
 
+        .highlight {
+    background-color: green;
+}
         /* Navbar styles */
 
         .navbar {
@@ -161,12 +164,10 @@
     </nav>
     <br>
     <br>
-    <br>
-    <section>
-        <!--for demo wrap-->
+    <br>  <section>
         <h1>LEADERBOARD</h1>
         <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0">
+            <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto; text-align: center;">
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -177,28 +178,39 @@
             </table>
         </div>
         <div class="tbl-content">
-            <table cellpadding="0" cellspacing="0" border="0">
+            <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto; text-align: center;">
                 <tbody>
                     <% leaderboard.forEach(function(user, index) { %>
-                        <tr>
-                            <td>
-                                <%= index + 1 %>
-                            </td>
-                            <td>
-                                <%= user.username %>
-                            </td>
-                            <td>
-                                <%= user.rankofuser %>
-                            </td>
+                        <% if (currentUser === user.username) { %>
+                            <tr style="color: white; background-color: green;">
+                                <td style="color: white; background-color: green;"><%= index + 1 %></td>
+                                <td style="color: white; background-color: green;"><%= user.username %></td>
+                                <td style="color: white; background-color: green;"><%= user.rankofuser %></td>
+                            </tr>
+                        <% } else { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= user.username %></td>
+                                <td><%= user.rankofuser %></td>
+                            </tr>
+                        <% } %>
+                    <% }); %>
+
+                    <% if (leaderboard.length >= 10 && !leaderboard.some(user => user.username === currentUser)) { %>
+                        <tr style="color: white; background-color: green;">
+                            <td> --- </td>
+                            <td><%= currentUser %></td>
+                            <td><%= rankofuser %></td>
                         </tr>
-                        <% }); %>
+                    <% } %>
                 </tbody>
             </table>
         </div>
+        <div class="center-text">
+            <p style="text-align: center;">Total Records: <%= totalRecords %></p>
+        </div>
     </section>
-
-
-
+    </body>
     <!-- <h1>LEADERBOARD TRIAL</h1>
     <table>
         <tr>
@@ -219,6 +231,5 @@
         <p>Your Rank: <%= currentUser.rankofuser %></p>
       <% } %>
     </body> -->
-</body>
 
 </html>
