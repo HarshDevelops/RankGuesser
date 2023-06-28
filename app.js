@@ -191,7 +191,8 @@ app.get('/login', function (req, res) {
   
   app.get('/', function (req, res) {
     console.log("totalVisitors: ", totalVisitors)
-    res.render('login', { totalVisitors: totalVisitors });
+    // res.render('login', { totalVisitors: totalVisitors });
+    res.sendFile(__dirname + "/public/index.html");
   });
   
   app.get('/public/submit-clip.html', async function (req, res) {
