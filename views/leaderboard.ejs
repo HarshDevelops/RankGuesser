@@ -147,7 +147,6 @@
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar">
         <div class="max-width">
@@ -164,7 +163,8 @@
     </nav>
     <br>
     <br>
-    <br>  <section>
+    <br>
+    <section>
         <h1>LEADERBOARD</h1>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto; text-align: center;">
@@ -181,7 +181,7 @@
             <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto; text-align: center;">
                 <tbody>
                     <% leaderboard.forEach(function(user, index) { %>
-                        <% if (currentUser === user.username) { %>
+                        <% if (currentUser && currentUser === user.username) { %>
                             <tr style="color: white; background-color: green;">
                                 <td style="color: white; background-color: green;"><%= index + 1 %></td>
                                 <td style="color: white; background-color: green;"><%= user.username %></td>
@@ -196,7 +196,13 @@
                         <% } %>
                     <% }); %>
 
-                    <% if (leaderboard.length >= 10 && !leaderboard.some(user => user.username === currentUser)) { %>
+                    <% if (!currentUser) { %>
+                        <tr>
+                            <td colspan="3">
+                                <button onclick="openLoginModal()">Login to View Leaderboard</button>
+                            </td>
+                        </tr>
+                    <% } else if (leaderboard.length >= 10 && !leaderboard.some(user => user.username === currentUser)) { %>
                         <tr style="color: white; background-color: green;">
                             <td> --- </td>
                             <td><%= currentUser %></td>
@@ -210,7 +216,28 @@
             <p style="text-align: center;">Total Records: <%= totalRecords %></p>
         </div>
     </section>
-    </body>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <!-- Add your login form fields here -->
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openLoginModal() {
+            document.getElementById("loginModal").style.display = "block";
+        }
+
+        function closeLoginModal() {
+            document.getElementById("loginModal").style.display = "none";
+        }
+    </script>
+</body>
     <!-- <h1>LEADERBOARD TRIAL</h1>
     <table>
         <tr>

@@ -269,19 +269,23 @@ app.get('/login', function (req, res) {
     }
     res.redirect('/public/clip-guess');
   });
-
   app.get('/leaderboard', async function (req, res) {
     try {
-
-      const leaderboard = await auth.find({}, 'username rankofuser')
-        .sort({ rankofuser: -1 })
-        .limit(10)
-        .exec();
-      
-      const currentUser = await auth.findOne({ username: req.session.username }, 'rankofuser');
-    const currusername = req.session.username;
-      const totalRecords = await auth.countDocuments();
-      res.render('leaderboard', { leaderboard: leaderboard, currentUser: currusername, totalRecords: totalRecords , rankofuser : currentUser.rankofuser});
+      if (req.session.username==undefined) {
+        // User is not logged in, display a pop-up message asking to log in first
+        const message = "Please log in to access the leaderboard.";
+        res.render('login', { message: message , totalVisitors: totalVisitors});
+      } else {
+        const leaderboard = await auth.find({}, 'username rankofuser')
+          .sort({ rankofuser: -1 })
+          .limit(10)
+          .exec();
+          
+        const currentUser = await auth.findOne({ username: req.session.username }, 'rankofuser');
+        const currusername = req.session.username;
+        const totalRecords = await auth.countDocuments();
+        res.render('leaderboard', { leaderboard: leaderboard, currentUser: currusername, totalRecords: totalRecords, rankofuser: currentUser.rankofuser });
+      }
     } catch (err) {
       console.log(err);
       res.status(500).json({ message: 'Internal server error' });
