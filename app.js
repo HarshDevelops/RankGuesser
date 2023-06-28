@@ -186,13 +186,14 @@ app.get('/login', function (req, res) {
       console.log(err);
       res.status(500).json({ message: 'Internal server error' });
     }
-    res.redirect('/login');
+    res.render('login');
   });
   
   app.get('/', function (req, res) {
     console.log("totalVisitors: ", totalVisitors)
     // res.render('login', { totalVisitors: totalVisitors });
-    res.sendFile(__dirname + "/public/index.html");
+    res.render('index', { totalVisitors: totalVisitors });
+    // res.sendFile(__dirname + "/public/index.html");
   });
   
   app.get('/public/submit-clip.html', async function (req, res) {
