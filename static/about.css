@@ -7,7 +7,7 @@ body, html{
 	padding: 0;
 	margin: 0;
 	font-family: 'Sniglet', cursive;
-	background-color: #1F2833;
+	background-color:424874;
 }
 h1{
 	font-weight: normal;
@@ -67,11 +67,11 @@ h1{
     font-weight: 600;   
 }
 .navbar .logo a span{
-    color: #66FCF1;
+    color: #F4EEFF;
     transition: all 0.3s ease;
 }
 .navbar.sticky .logo a span{
-    color:#66FCF1;
+    color:#F4EEFF;
 }
 .navbar .menu li{
     list-style: none;
@@ -80,7 +80,7 @@ h1{
 }
 .navbar .menu li a{
     display: block;
-    color:#66FCF1;
+    color:#F4EEFF;
     font-size: 15px;
     font-weight: 500;
     margin-left: 25px;
@@ -88,7 +88,7 @@ h1{
     transition: color 0.3s ease;
 }
 .navbar .menu li a:hover{
-    color: #66FCF1;
+    color: #F4EEFF;
 }
 .navbar.sticky .menu li a:hover{
     color: #fff;

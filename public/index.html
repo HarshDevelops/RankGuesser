@@ -2,91 +2,52 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rank Guesser</title>
-    <link type="text/css" rel="stylesheet" href="/public/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/public/styles.css">
 </head>
 
 <body style="background-color: #1F2833;">
-    <nav class="navbar">
-        <div class="max-width">
-            <ul class="menu">
-                <li><a href="/public/index.html" class="menu-btn">LOGO GOES HERE</a></li>
-                <li><a href="/public/index.html" class="menu-btn">Games</a></li>
-                <li><a href="/public/submit-clip.html" class="menu-btn">Add Your Clip</a></li>
-                <li><a href="/public/leaderboard.html" class="menu-btn">Leaderboard</a></li>
-                <li><a href="/public/about.html" class="menu-btn">About</a></li>
-            </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
+    <header>
+        <h2><a href="#">Rank Guesser</a></h2>
+        <nav>
+            <li><a href="#games" class="menu-btn">Games</a></li>
+            <li><a href="/public/submit-clip.html" class="menu-btn">Add Your Clip</a></li>
+            <li><a href="/leaderboard" class="menu-btn">Leaderboard</a></li>
+            <li><a href="/public/about.html" class="menu-btn">About</a></li>
+        </nav>
+      </header>
+    
+      <section class="hero">
+        <div class="background-image"></div>
+        <div class="hero-content-area">
+          <h1>RANK GUESSER</h1>
+          <h3>Unlock the Power of Prediction: Welcome to Rank Guesser, where you become the ultimate judge of skill and expertise!</h3>
+          <a href="/login" class="btn">Login/SignUp</a>
         </div>
-    </nav>
-
-
-    <div class="container" style="color: white;">
-        <div class="content">
-            <div class="square twitch" style="margin-bottom: 50px;">
-                <span class="one"></span>
-                <span class="two"></span>
-                <span class="three"></span>
-                <div class="circle">
-                    <h2 class="RankGuesser"> RankGuesser </h2>
-                    <p>Guess The Rank!</p>
-                </div>
-            </div>
-
-            <div class="gamesection">
-                <h6 style="text-align: center;">Guess The Rank Of Players Of Your Favorite Games</h6>
-                <hr>
-
-                <div class="containercard">
-
-                    <div style="display: table;   clear: both; ">
-
-                        <a href="/public/clip-guess.html" class="href"> <img src="./ICONS/bgmi.jpg" alt="Avatar"
-                                class="image" style="margin-left:2%; margin-top: 10%;">
-                        </a>
-
-                        <a href="/public/clip-guess.html" class="href"> <img src="./ICONS/bgmi.jpg" alt="Avatar"
-                                class="image" style="margin-left: 2%; margin-top: 10%;"> </a>
-
-                        <a href="/public/clip-guess.html" class="href"> <img src="./ICONS/bgmi.jpg" alt="Avatar"
-                                class="image" style="margin-left: 2%; margin-top: 10%;"> </a>
-
-                        <a href="/public/clip-guess.html" class="href"> <img src="./ICONS/bgmi.jpg" alt="Avatar"
-                                class="image" style="margin-left: 2%; margin-top: 10%;"> </a>
-
-                        <a href="/public/clip-guess.html" class="href"> <img src="./ICONS/bgmi.jpg" alt="Avatar"
-                                class="image" style="margin-left: 2%; margin-top: 10%;"> </a>
-
-                        <a href="/public/clip-guess.html" class="href"> <img src="./ICONS/bgmi.jpg" alt="Avatar"
-                                class="image" style="margin-left: 2%; margin-top: 10%;"> </a>
-                    </div>
-
-
-
-
-
-                </div>
-
-            </div>
-
-
-
-
-
-            <div style="color: white;">
-                <a href="/public/acutalpage.html" class="button" target="_parent">
-                    <span class="actual-text" style="color: white;">&nbsp;Made with ❣️ by Harsh&nbsp;</span>
-                </a>
-            </div>
-
+      </section>
+    
+      <section class="destinations">
+        <h3 class="title" id="games">Some of our games:</h3>
+        <p>Ready for a thrilling challenge? Join us on Rank Guesser and embark on an extraordinary journey of skill assessment and prediction. Explore the gripping world of rankings as you discover fascinating clips shared by users who have taken their guessing skills to new heights.</p>
+        <hr>
+    
+        <ul class="grid">
+          <li class="small image-1"></li>
+          <li class="small image-1"></li>
+          <li class="small image-1"></li>
+          <li class="small image-1"></li>
+          <li class="small image-1"></li>
+          <li class="small image-1"></li>
+        </ul>
+      </section>
+    
+      <footer>
+        <a href="https://github.com/HarshDevelops"  target="_blank" class="button" target="_parent">
+            <span class="actual-text" style="color: white;">&nbsp;Made with ❣️ by Harsh&nbsp;</span>
+        </a>
+      </footer>
+    
         </div>
 
 </html>

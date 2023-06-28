@@ -112,6 +112,15 @@ const notesSchema = {
   rank: String
 };
 
+const bgmisSchema = {
+  unique_no: Number,
+  link: String,
+  name: String,
+  rank: String
+};
+
+const bgmis = mongoose.model("bgmis", bgmisSchema);
+
 const authenticationSchema = {
   username: String,
   password: String,
@@ -199,17 +208,27 @@ app.get('/login', function (req, res) {
     };
     var x = randomNumber(options);
     console.log(x);
-    let Newnote = new Bgmi({
+    let Newnote = new bgmis({
       unique_no: x,
       link: req.body.link,
       name: req.body.name,
       rank: req.body.rank
     });
     alert("Clip Submitted Successfully");
-    Newnote.save();
-    res.redirect('/');
-  });
   
+    // Save the new instance to the database
+    Newnote.save()
+      .then(() => {
+        console.log("New instance saved successfully");
+        res.redirect('/');
+      })
+      .catch((error) => {
+        console.error("Error saving new instance:", error);
+        res.status(500).json({ message: 'Internal server error' });
+      });
+  });
+
+
   var link = "";
   var rank = "";
   
