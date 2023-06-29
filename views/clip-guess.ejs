@@ -1,74 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rank Guesser</title>
-    <link type="text/css" rel="stylesheet" href="/public/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+    <title>Submit-Clip</title>
+    <link type="text/css" rel="stylesheet" href="/public/contact.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+
 <body style="background-color: #1F2833;">
-    <nav class="navbar">
-        <div class="max-width">
-            <ul class="menu">
-                <li><a href="/public/index.html" class="menu-btn">Games</a></li>
-                <li><a href="/public/submit-clip.html" class="menu-btn">Add Your Clip</a></li>
-                <li><a href="/public/leaderboard.html" class="menu-btn">Leaderboard</a></li>
-                <li><a href="/public/about.html" class="menu-btn">About</a></li>
-            </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <h2><a href="#">Rank Guesser</a></h2>
+        <nav>
+            <li><a href="/public/index.html" class="menu-btn">Games</a></li>
+            <li><a href="/public/submit-clip.html" class="menu-btn">Add Your Clip</a></li>
+            <li><a href="/leaderboard" class="menu-btn">Leaderboard</a></li>
+            <li><a href="/public/about.html" class="menu-btn">About</a></li>
+        </nav>
+      </header>
 
-    <header style="background-color: #1F2833; text-align: center;">
-        <u>
-            <h1 style="margin-bottom: 0; color: #66FCF1;">GUESS THE RANK</h1>
-        </u>
-    </header>
+<br>
+<br>
+<br>
+<br>
 
-    <div class="clip" style="border: #66FCF1 2px solid;">
-        <div style="margin: auto;
-      width: 50%;
-      padding: 10px;">
-            <iframe width="560" height="315" src= <%= URL_COMES_HERE %>
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
+<div class="clip" style="border: #66FCF1 2px solid; align-items: center;">
+    <div style="margin: auto; align-items: center; align-self: center; align-content: center;
+  width: 50%;
+  padding: 10px;">
+        <iframe width="560" height="315" style="text-align: center;" src= <%= URL_COMES_HERE %>
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
     </div>
+</div>
 
-    <div class="rank">
-        <form action="/public/clip-guess" method="post">
-            <button class="button" value="Bronze" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Bronze</button>
-            <button class="button" value="Silver" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Silver</button>
-            <button class="button" value="Gold" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Gold</button>
-            <button class="button" value="Platinum" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Platinum</button>
-            <button class="button" value="Diamond" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Diamond</button>
-            <button class="button" value="Crown" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Crown</button>
-            <button class="button" value="Ace" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Ace</button>
-            <button class="button" value="Conqueror" name="Button"
-                style="background-color: aliceblue; margin-left: 2%;">Conqueror</button>
-        </form>
-    </div>
+
+<div class="rank" >
+    <form action="/public/clip-guess" method="post">
+        <button class="button" value="Bronze" name="Button"
+            >Bronze</button>
+        <button class="button" value="Silver" name="Button"
+            >Silver</button>
+        <button class="button" value="Gold" name="Button"
+            >Gold</button>
+        <button class="button" value="Platinum" name="Button"
+            >Platinum</button>
+        <button class="button" value="Diamond" name="Button"
+            >Diamond</button>
+        <button class="button" value="Crown" name="Button"
+            >Crown</button>
+        <button class="button" value="Ace" name="Button"
+            >Ace</button>
+        <button class="button" value="Conqueror" name="Button"
+            >Conqueror</button>
+    </form>
+</div>
+
+
 </body>
-<script>
-    // know which button is clicekd and print its value
-
-
-</script>
-
 </html>

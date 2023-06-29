@@ -1,14 +1,14 @@
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 const dbConn = "mongodb+srv://harsheydevs:harshkaaccount@rankguesser.zszfjfg.mongodb.net/Clips";
+const client = mongoose.connect(dbConn, { useNewUrlParser: true, useUnifiedTopology: true });
+const clients = MongoClient.connect(dbConn);
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
 const randomNumber = require('random-number');
 let alert = require('alert');
 const notifier = require('node-notifier');
-const client = mongoose.connect(dbConn, { useNewUrlParser: true, useUnifiedTopology: true });
-const clients = MongoClient.connect(dbConn);
 const session = require('express-session');
 
 async function main() {
@@ -139,13 +139,15 @@ app.get('/login', function (req, res) {
     console.log("in here");
     const username = req.body.username;
     const password = req.body.password;
-  
+    console.log(username,password);
     try {
       const founduser = await auth.findOne({ username: username });
       if (founduser) {
         if (founduser.password === password) {
           req.session.username = username;
-          res.redirect('/public/submit-clip.html');
+          // res.redirect('/public/submit-clip.html');
+          // res.render('clip-guess');
+          res.redirect('/public/clip-guess');
         } else {
           alert("Wrong Password");
           res.redirect('/login');
@@ -161,7 +163,7 @@ app.get('/login', function (req, res) {
   });
   
   app.get('/register', function (req, res) {
-    res.sendFile(__dirname + "/public/register.html")
+    res.render('register');
   });
   
   app.post('/register', async function (req, res) {

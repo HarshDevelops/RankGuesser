@@ -20,6 +20,49 @@
             color: #fff;
         }
 
+        
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	font-family: "Raleway", sans-serif;
+	color: #555;
+}
+
+ul,
+nav {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	opacity: 0.75;
+	color: #fff;
+}
+
+a:hover {
+	opacity: 1;
+}
+
+a.btn {
+	border-radius: 4px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+	background-color: #e07e7b;
+	opacity: 1;
+	transition: all 400ms;
+}
+
+a.btn:hover {
+	background-color: #ce5856;
+}
+
+
         h1 {
             font-size: 30px;
             color: #fff;
@@ -83,84 +126,63 @@
         .highlight {
     background-color: green;
 }
-        /* Navbar styles */
 
-        .navbar {
-            position: fixed;
-            width: 100%;
-            z-index: 999;
-            padding: 10px 0;
-            font-family: 'Ubuntu', sans-serif;
-            transition: all 0.3s ease;
-        }
+        
+header {
+	position: absolute;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 35px 100px 0;
+	animation: 1s fadein 0.5s forwards;
+	opacity: 0;
+	color: #fff;
+	z-index: 2;
+}
 
-        .navbar a {
-            color: #66FCF1;
-        }
+@keyframes fadein {
+	100% {
+		opacity: 1;
+	}
+}
 
-        .navbar.sticky {
-            padding: 15px 0;
-            background: #66FCF1;
-        }
+header h2 {
+	font-family: "Amatic SC", sans-serif;
+}
 
-        .navbar .max-width {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+header nav {
+	display: flex;
+	margin-right: -15px;
+}
 
-        .navbar .logo a {
-            color: #66FCF1;
-            font-size: 35px;
-            font-weight: 600;
-        }
+header nav li {
+	margin: 0 15px;
+}
 
-        .navbar .logo a span {
-            color: #66FCF1;
-            transition: all 0.3s ease;
-        }
+@media (max-width: 800px) {
+	header {
+		padding: 20px 50px;
+		flex-direction: column;
+	}
 
-        .navbar.sticky .logo a span {
-            color: #66FCF1;
-        }
+	header h2 {
+		margin-bottom: 15px;
+	}
+}
 
-        .navbar .menu li {
-            list-style: none;
-            display: inline-block;
-        }
-
-        .navbar .menu li a {
-            display: block;
-            color: #66FCF1;
-            font-size: 15px;
-            font-weight: 500;
-            margin-left: 25px;
-            transition: color 0.3s ease;
-        }
-
-        .navbar .menu li a:hover {
-            color: #66FCF1;
-        }
-
-        .navbar.sticky .menu li a:hover {
-            color: #fff;
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="max-width">
-            <ul class="menu">
-                <li><a href="/public/index.html" class="menu-btn">Games</a></li>
-                <li><a href="/public/submit-clip.html" class="menu-btn">Add Your Clip</a></li>
-                <li><a href="/public/leaderboard.html" class="menu-btn">Leaderboard</a></li>
-                <li><a href="/public/about.html" class="menu-btn">About</a></li>
-            </ul>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <h2><a href="#">Rank Guesser</a></h2>
+        <nav>
+            <li><a href="/public/index.html" class="menu-btn">Games</a></li>
+            <li><a href="/public/submit-clip.html" class="menu-btn">Add Your Clip</a></li>
+            <li><a href="/leaderboard" class="menu-btn">Leaderboard</a></li>
+            <li><a href="/public/about.html" class="menu-btn">About</a></li>
+        </nav>
+      </header>
     <br>
     <br>
     <br>
@@ -218,7 +240,7 @@
     </section>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="modal">
+    <div id="loginModal" class="modal" style="visibility: hidden;">
         <div class="modal-content">
             <span class="close" onclick="closeLoginModal()">&times;</span>
             <h2>Login</h2>

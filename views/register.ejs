@@ -16,7 +16,7 @@
     <!--Link File CSS  -->
     <link rel="stylesheet" href="./styles.css">
 
-    <title>Login Page Design</title>
+    <title>Registration Page</title>
     <style>
         body {
             background-image: url("https://images.unsplash.com/photo-1583441424221-c41173afe9ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
@@ -123,20 +123,19 @@
     <div class="kotakForm">
         <div class="kotakLogin">
             <div class="headerLogin">
-                <h1><u>Login</u></h1>
+                <h1><u>Register</u></h1>
                 <div class="formDiv">
                     <!-- Bagian Form Login -->
-                    <form action="/login" method="post">
+                    <form action="/register" method="post">
                         <input name="username" type="text" class="userName inputText" placeholder="Enter Your Username: " required /> <i
                             class="fa-solid fa-user"></i> <br>
                         <input type="password" name="password" class="userPass inputText" placeholder="Enter Your Password: "
                             required /> <i class="fa-solid fa-lock"></i><br>
-                        <input type="submit" name="submit" id="submitBtn" value="Login" style="background-color: white; color: black; width: 50%; align-self: center; ">
+                        <input type="submit" name="submit" id="submitBtn" value="Register" style="background-color: white; color: black; width: 50%; align-self: center; ">
                     </form>
                 </div>
                 <!-- navigasi register  -->
-                <p>Don't have an account? <a href="/register">Sign Up!</a></p>
-                <a id="lupaPass" name="resetpwd" href="/register" style="color: white;">Forgot Password?</a>
+                <p>Don't have an account? <a href="/login">Sign In!</a></p>
             </div>
         </div>
     </div>

@@ -400,6 +400,7 @@ textarea{
 
 
 button {
+	
     transition: all .5s ease;
     color: #fff;
     border: 3px solid white;
@@ -415,7 +416,7 @@ button {
 	height: 50px;
 	width: 100%;
 	cursor: pointer;
-	margin-top:50%;
+	margin-top: 5%;
 	font-size: 1.29em;
 	font-family: 'Sniglet', cursive;
 }
