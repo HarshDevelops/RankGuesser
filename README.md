@@ -36,7 +36,7 @@ To set up the RankGuesser project locally, follow these steps:
 
 1. Clone this repository to your local machine using the following command:
 
-```git clone https://github.com/your-username/RankGuesser.git```
+```git clone https://github.com/HarshDevelops/RankGuesser.git```
 
 
 2. Navigate to the project directory:
